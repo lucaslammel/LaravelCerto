@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Atividade;
+use App\mensagens;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class AtividadeController extends Controller
+class MensagemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class AtividadeController extends Controller
      */
     public function index()
     {
-        $listaAtividades = Atividade::all();
-        return view('atividade.list',['atividades' => $listaAtividades]);
-    }
+        $listaMensagens = mensagens::all();
+        return view('mensagens.list',['mensagens' => $listaMensagens]);
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -26,7 +26,7 @@ class AtividadeController extends Controller
      */
     public function create()
     {
-        return view('atividade.create');
+        return view('mensagens.create');
     }
 
     /**
@@ -38,52 +38,52 @@ class AtividadeController extends Controller
     public function store(Request $request)
     {
         $messages = array(
-            'title.required' => 'É obrigatório um título para a atividade',
-            'description.required' => 'É obrigatória uma descrição para a atividade',
-            'scheduledto.required' => 'É obrigatório o cadastro da data/hora da atividade',
+            'titulo.required' => 'É obrigatório um título para a mensagem',
+            'texto.required' => 'É obrigatório um texto para a mensagem',
+            'autor.required' => 'É obrigatório um autor para a mensagem',
             );
             //vetor com as especificações de validações
             $regras = array(
-            'title' => 'required|string|max:255',
-            'description' => 'required',
-            'scheduledto' => 'required|string',
+            'titulo' => 'required|string|max:255',
+            'texto' => 'required',
+            'autor' => 'required|string',
             );
             //cria o objeto com as regras de validação
             $validador = Validator::make($request->all(), $regras, $messages);
             //executa as validações
             if ($validador->fails()) {
-            return redirect('atividades/create')
+            return redirect('mensagens/create')
             ->withErrors($validador)
             ->withInput($request->all);
             }
             //se passou pelas validações, processa e salva no banco...
-            $obj_Atividade = new Atividade();
-            $obj_Atividade->title = $request['title'];
-            $obj_Atividade->description = $request['description'];
-            $obj_Atividade->scheduledto = $request['scheduledto'];
-            $obj_Atividade->save();
-            return redirect('/atividades')->with('success', 'Atividade criada com sucesso!!');
+            $obj_mensagens = new mensagens();
+            $obj_mensagens->titulo = $request['titulo'];
+            $obj_mensagens->texto = $request['texto'];
+            $obj_mensagens->autor = $request['autor'];
+            $obj_mensagens->save();
+            return redirect('/mensagens')->with('success', 'Mensagem criada com sucesso!!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Atividade  $atividade
+     * @param  \App\mensagens  $mensagens
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $atividade = Atividade::find($id);
-        return view('atividade.show',['atividade' => $atividade]);
-    }
+        $mensagem = Mensagens::find($id);
+        return view('mensagens.show',['mensagem' => $mensagem]);
+     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Atividade  $atividade
+     * @param  \App\mensagens  $mensagens
      * @return \Illuminate\Http\Response
      */
-    public function edit(Atividade $atividade)
+    public function edit(mensagens $mensagens)
     {
         //
     }
@@ -92,10 +92,10 @@ class AtividadeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Atividade  $atividade
+     * @param  \App\mensagens  $mensagens
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Atividade $atividade)
+    public function update(Request $request, mensagens $mensagens)
     {
         //
     }
@@ -103,10 +103,10 @@ class AtividadeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Atividade  $atividade
+     * @param  \App\mensagens  $mensagens
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Atividade $atividade)
+    public function destroy(mensagens $mensagens)
     {
         //
     }

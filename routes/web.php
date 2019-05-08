@@ -17,7 +17,14 @@ Route::get('/', function () {
 
 
 Route::get('/atividades', 'AtividadeController@index');
-
+Route::get('/atividades/create', 'AtividadeController@create');
+Route::post('/atividades', 'AtividadeController@store');
+Route::get('/mensagens', 'MensagemController@index');
+Route::get('/atividades/{id}', 'AtividadeController@show');
+Route::get('/atividades/{id}', 'AtividadeController@show');
+Route::get('/mensagens/create', 'MensagemController@create');
+Route::get('/mensagens/{id}', 'MensagemController@show');
+Route::post('/mensagens', 'MensagemController@store');
 
 
 
