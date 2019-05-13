@@ -8,3 +8,10 @@ Descrição:      <input type="text" name="description" value="{{$atividades->de
 Agendado para:  <input type="datetime-local" name="scheduledto" value="{{$atividades->scheduledto}}" > <br>
 <input type="submit" value="Salvar">
 </form>
+
+@if ($errors->any())
+
+@foreach ($errors->all() as $error)
+{{$error}} @endforeach
+@endif
+

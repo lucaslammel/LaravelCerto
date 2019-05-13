@@ -8,3 +8,10 @@ Texto:      <input type="text" name="texto" value="{{$mensagens->texto}}" > <br>
 Autor:  <input type="text" name="autor" value="{{$mensagens->autor}}" > <br>
 <input type="submit" value="Salvar">
 </form>
+
+@if ($errors->any())
+
+@foreach ($errors->all() as $error)
+{{$error}} @endforeach
+@endif
+
