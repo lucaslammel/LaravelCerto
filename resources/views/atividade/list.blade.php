@@ -19,4 +19,7 @@
 	<br>
 @endforeach
 
+@if(Auth::check())
+<a href="/atividades/create">Criar nova Atividade</a>
+@endif
 <!-- \Carbon\Carbon::parse($a->scheduledto)->format('d/m/Y h:m')  -->

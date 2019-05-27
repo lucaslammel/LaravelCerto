@@ -14,4 +14,6 @@
 <h2><a href="/mensagens/{{$m->id}}">{{$m->titulo}}</a></h2>
 @endforeach
 
+@if(Auth::check())
 <a href="/mensagens/create">Criar nova Mensagem</a>
+@endif
