@@ -15,13 +15,17 @@ class MensagensTableseeder extends Seeder
         mensagens::create([
             'titulo' => 'Topicos Especiais',
             'autor' => 'Tiago Rios',
-            'texto' => 'Vamo dale pra não tomale'
+            'texto' => 'Vamo dale pra não tomale',
+            'user_id' => 1,
+            'atividade_id' => 1
         ]);
 
         mensagens::create([
             'titulo' => 'Topicos Especialees',
             'autor' => 'Tiago Rios Rocha',
-            'texto' => 'Vamo dale pra não tomaleeeeeee'
+            'texto' => 'Vamo dale pra não tomaleeeeeee',
+            'user_id' => 2,
+            'atividade_id' => 2
         ]);
 
     }
