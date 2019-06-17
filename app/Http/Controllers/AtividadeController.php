@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Atividade;
+use App\mensagens;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 

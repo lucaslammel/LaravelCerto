@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Mensagem;
+use App\mensagens;
 
 class Atividade extends Model
 {
@@ -11,7 +11,7 @@ class Atividade extends Model
 
     public function mensagens()
     {
-        return $this->hasMany(Mensagem::class);
+        return $this->hasMany(mensagens::class);
     }
 }
 
